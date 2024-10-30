@@ -13,24 +13,26 @@ public protocol AbstractOperatorProtocol {
     //연산 프로퍼티에선 let을 사용할 수 없어 읽기 전용으로 선언함.
 //    var firstOperand: Int { get }
 //    var secondOperand: Int { get }
-  // >> 오퍼레이터에서도 정수를 가지고 있는 것보다 오퍼레이터의 메서드에서 바로 전달받고 사용하는 것이 맞다고 판단하여 삭제
+  // >> 오퍼레이터에서도 정수를 가지고 있는 것보다 오퍼레이터의 메서드에서 바로 전달받고 사용하는 것이 맞다고 판단하여 삭제    
     
-    
-    //정수형을 반환하는 연산 메서드를 반드시 가지도록 정의
-    func operate(_ firstOperand: Int, _ secondOperand: Int) -> Int
+    func operate(_ firstOperand: Int?, _ secondOperand: Int?) -> Int?
     
     //피연산자를 받는 초기화 구문이 필요함
 //    init(firstOperand: Int, secondOperand: Int)
     //오퍼레이터가 피연산자를 가지고 있을 필요가 없어졌기 때문에 속성을 정의하는 초기화구문도 삭제
     
-    //자동으로 생성되는 class 이니셜라이저의 접근수준을 제어하기 위해 이니셜라이저 선언
+    //자동으로 생성되는 class 이니셜라이저의 접근수준을 잊지 않고 제어하기 위해 이니셜라이저 선언
     init()
 }
 
 public class Add: AbstractOperatorProtocol {
 
-    public func operate(_ firstOperand: Int, _ secondOperand: Int) -> Int {
-        return firstOperand + secondOperand
+    public func operate(_ firstOperand: Int?, _ secondOperand: Int?) -> Int? {
+        if let first = firstOperand, let second = secondOperand {
+            return first + second
+        } else {
+            return nil
+        }
     }
     
     public required init() {
@@ -48,8 +50,12 @@ public class Add: AbstractOperatorProtocol {
 
 //빼기 연산
 public class Sub: AbstractOperatorProtocol {
-    public func operate(_ firstOperand: Int, _ secondOperand: Int) -> Int {
-        return firstOperand - secondOperand
+    public func operate(_ firstOperand: Int?, _ secondOperand: Int?) -> Int? {
+        if let first = firstOperand, let second = secondOperand {
+            return first - second
+        } else {
+            return nil
+        }
     }
     
     public required init(){
@@ -69,5 +75,9 @@ public class OperatorFactory {
         default:
             return nil
         }
+    }
+    
+    public init(){
+        
     }
 }
