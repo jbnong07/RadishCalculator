@@ -34,6 +34,12 @@
  4. 각 객체들을 테스트하는 방법 생각하고 테스트해보기
  */
 
+/*
+ 10.31 변경사항
+ 곱하기, 나누기 추가
+ 캡슐화와 데이터 무결성, 상태 표시에 관한 공부 후 추가
+ */
+
 let radishCalculator = Calculator()
 
 radishCalculator.calculate()

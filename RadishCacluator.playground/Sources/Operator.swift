@@ -63,6 +63,34 @@ public class Sub: AbstractOperatorProtocol {
     }
 }
 
+public class Mul: AbstractOperatorProtocol {
+    public func operate(_ firstOperand: Int?, _ secondOperand: Int?) -> Int? {
+        if let first = firstOperand, let second = secondOperand {
+            return first * second
+        } else {
+            return nil
+        }
+    }
+    
+    public required init(){
+        
+    }
+}
+
+public class Div: AbstractOperatorProtocol {
+    public func operate(_ firstOperand: Int?, _ secondOperand: Int?) -> Int? {
+        if let first = firstOperand, let second = secondOperand {
+            return first / second
+        } else {
+            return nil
+        }
+    }
+    
+    public required init(){
+        
+    }
+}
+
 //팩토리 패턴 구현 >> 외부에서 switch 쓰는 대신 유지 보수를 용이하려고 함.
 public class OperatorFactory {
     //static을 붙여서 객체를 생성하지 않고도 접근가능한 메서드를 만듬
@@ -72,12 +100,16 @@ public class OperatorFactory {
             return Add()
         case "-", "sub":
             return Sub()
+        case "*", "mul":
+            return Mul()
+        case "/", "div":
+            return Div()
         default:
             return nil
         }
     }
-    
-    public init(){
+    //이니셜라이저를 private으로 설정하여 불필요한 객체 생성을 막음.
+    private init(){
         
     }
 }
