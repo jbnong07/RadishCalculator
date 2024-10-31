@@ -25,7 +25,7 @@ public protocol AbstractOperatorProtocol {
     init()
 }
 
-public class Add: AbstractOperatorProtocol {
+private class Add: AbstractOperatorProtocol {
 
     public func operate(_ firstOperand: Int?, _ secondOperand: Int?) -> Int? {
         if let first = firstOperand, let second = secondOperand {
@@ -49,7 +49,7 @@ public class Add: AbstractOperatorProtocol {
 }
 
 //빼기 연산
-public class Sub: AbstractOperatorProtocol {
+private class Sub: AbstractOperatorProtocol {
     public func operate(_ firstOperand: Int?, _ secondOperand: Int?) -> Int? {
         if let first = firstOperand, let second = secondOperand {
             return first - second
@@ -63,7 +63,7 @@ public class Sub: AbstractOperatorProtocol {
     }
 }
 
-public class Mul: AbstractOperatorProtocol {
+private class Mul: AbstractOperatorProtocol {
     public func operate(_ firstOperand: Int?, _ secondOperand: Int?) -> Int? {
         if let first = firstOperand, let second = secondOperand {
             return first * second
@@ -77,7 +77,7 @@ public class Mul: AbstractOperatorProtocol {
     }
 }
 
-public class Div: AbstractOperatorProtocol {
+private class Div: AbstractOperatorProtocol {
     public func operate(_ firstOperand: Int?, _ secondOperand: Int?) -> Int? {
         if let first = firstOperand, let second = secondOperand {
             return first / second
@@ -96,13 +96,13 @@ public class OperatorFactory {
     //static을 붙여서 객체를 생성하지 않고도 접근가능한 메서드를 만듬
     public static func createOperator(_ inputOperator: String) -> AbstractOperatorProtocol? {
         switch inputOperator {
-        case "+", "add":
+        case "+":
             return Add()
-        case "-", "sub":
+        case "-":
             return Sub()
-        case "*", "mul":
+        case "*":
             return Mul()
-        case "/", "div":
+        case "/":
             return Div()
         default:
             return nil
