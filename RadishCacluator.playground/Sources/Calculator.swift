@@ -46,21 +46,21 @@ public final class Calculator {
         //피연산자 입력 안내
         printer.printReceiveOperandMessage()
         //리시버로 Calculator의 data.firstOperand에 입력받음
-        data.firstOperand = receiver.receiveOperand()
+        inputFirstOperand(receiveOperand: receiver.receiveOperand())
         //입력 재확인
         printer.printCheckReceive(data.firstOperand)
         
         //연산자 입력 안내
         printer.printReceiveOperatorMessage()
         //리시버로 연산자 입력
-        data.operatorString = receiver.receiveOperator()
+        inputOperator(receiveOperand: receiver.receiveOperator())
         //입력 재확인
         printer.printCheckReceive(data.operatorString)
         
         //두 번째 피연산자 입력 안내
         printer.printReceiveOperandMessage()
         //피연산자 입력
-        data.secondOperand = receiver.receiveOperand()
+        inputSecondOperand(receiveOperand: receiver.receiveOperand())
         //입력 재확인
         printer.printCheckReceive(data.secondOperand)
         
@@ -108,6 +108,16 @@ extension Calculator {
     //현재는 각각의 피연산자마다 수정하는 메서드를 만들었지만 추후에는 현재 받는 입력이 어떤, 몇 번째 입력인지 추적하는 상태변수를 통해
     //하나의 메서드로 묶을 수 있다면 더욱 간결해질 거라 생각함.
     private func inputFirstOperand(receiveOperand: Int?){
+        //정수가 입력되었는지 receiver가 체크를 함에도 여기서 한 번 더 체크를 해야 하는지 모르겠음
+        self.data.firstOperand = receiveOperand
+    }
+    private func inputSecondOperand(receiveOperand: Int?){
+        
+        self.data.secondOperand = receiveOperand
+    }
+    private func inputOperator(receiveOperand: String?){
+        
+        self.data.operatorString = receiveOperand
     }
 }
 
