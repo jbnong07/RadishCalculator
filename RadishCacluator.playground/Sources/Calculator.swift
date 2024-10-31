@@ -18,9 +18,9 @@
 import Foundation
 
 public final class Calculator {
-    var data: CalculatorData = CalculatorData()
-    let receiver: ReceiverProtocol
-    let printer: PrinterProtocol
+    private var data: CalculatorData = CalculatorData()
+    private let receiver: ReceiverProtocol
+    private let printer: PrinterProtocol
     
 //    //이번 과제는 직접 입력받지 않고 바로 정수를 전달하도록 코딩
 //    public func receiveInput(_ first: Int, _ second: Int) {
@@ -102,6 +102,12 @@ extension Calculator {
         var secondOperand: Int?
         var operatorString: String?
         var result: Int?
+    }
+    
+    
+    //현재는 각각의 피연산자마다 수정하는 메서드를 만들었지만 추후에는 현재 받는 입력이 어떤, 몇 번째 입력인지 추적하는 상태변수를 통해
+    //하나의 메서드로 묶을 수 있다면 더욱 간결해질 거라 생각함.
+    private func inputFirstOperand(receiveOperand: Int?){
     }
 }
 
