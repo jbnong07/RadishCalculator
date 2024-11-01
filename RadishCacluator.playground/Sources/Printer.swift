@@ -16,7 +16,7 @@ public protocol PrinterProtocol {
     //결과 메시지
     func printResult(_ result: Int)
     //에러 메시지
-    func printErrorMessage(_ code: Int)
+    func printErrorMessage(_ code: String)
     
     init()
 }
@@ -49,12 +49,14 @@ public class Printer: PrinterProtocol {
         print("연산 결과: \(result)")
     }
     
-    public func printErrorMessage(_ code: Int) {
+    public func printErrorMessage(_ code: String) {
         switch code {
-        case 1:
+        case "operatorError":
             print("아직 지원하지 않는 연산자입니다.")
-        case 2:
+        case "operandError":
             print("정수 입력이 잘못되었습니다.")
+        case "divideZero":
+            print("0으로 나누거나 0을 나눌 수 없습니다.")
         default:
             print("알 수 없는 오류입니다.")
         }

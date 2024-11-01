@@ -64,15 +64,22 @@ public final class Calculator {
         //입력 재확인
         printer.printCheckReceive(data.secondOperand)
         
+        if data.operatorString == "/" {
+            if data.firstOperand == 0 || data.secondOperand == 0 {
+                printer.printErrorMessage("divideZero")
+                return
+            }
+        }
+        
         //연산 결과 result에 입력 / 입력받은 연산이 없다면 반환되는 nil을 통해 에러 메세지 출력과 함께 종료
         guard let selectedOperator = OperatorFactory.createOperator(data.operatorString ?? "nil error") else {
-            printer.printErrorMessage(1)
+            printer.printErrorMessage("operatorError")
             return
         }
         self.data.result = selectedOperator.operate(data.firstOperand, data.secondOperand)
         //결과가 nil일 경우 정수 입력에서 문제가 발생했다고 판단하고 종료
         guard let result = data.result else {
-            printer.printErrorMessage(2)
+            printer.printErrorMessage("operandError")
             return
         }
         //결과 출력
