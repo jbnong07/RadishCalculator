@@ -22,7 +22,8 @@ public protocol AbstractOperatorProtocol {
     //오퍼레이터가 피연산자를 가지고 있을 필요가 없어졌기 때문에 속성을 정의하는 초기화구문도 삭제
     
     //자동으로 생성되는 class 이니셜라이저의 접근수준을 잊지 않고 제어하기 위해 이니셜라이저 선언
-    init()
+    //팩토리 패턴을 적용하면서 불필요해졌으므로 삭제함
+    //    init()
 }
 
 private class Add: AbstractOperatorProtocol {
@@ -35,9 +36,7 @@ private class Add: AbstractOperatorProtocol {
         }
     }
     
-    public required init() {
-        
-    }
+   
     
     //required를 붙임으로써 추후 서브클래스에서도 해당 이니셜라이저를 반드시 가지도록 할 수 있음
 //    public required init(firstOperand: Int, secondOperand: Int) {
@@ -58,9 +57,7 @@ private class Sub: AbstractOperatorProtocol {
         }
     }
     
-    public required init(){
-        
-    }
+  
 }
 
 private class Mul: AbstractOperatorProtocol {
@@ -72,9 +69,7 @@ private class Mul: AbstractOperatorProtocol {
         }
     }
     
-    public required init(){
-        
-    }
+  
 }
 
 private class Div: AbstractOperatorProtocol {
@@ -85,10 +80,7 @@ private class Div: AbstractOperatorProtocol {
             return nil
         }
     }
-    
-    public required init(){
-        
-    }
+ 
 }
 
 private class Remain: AbstractOperatorProtocol {
@@ -98,10 +90,6 @@ private class Remain: AbstractOperatorProtocol {
         } else {
             return nil
         }
-    }
-    
-    public required init(){
-        
     }
 }
 
