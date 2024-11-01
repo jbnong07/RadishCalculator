@@ -64,11 +64,10 @@ public final class Calculator {
         //입력 재확인
         printer.printCheckReceive(data.secondOperand)
         
-        if data.operatorString == "/" {
-            if data.firstOperand == 0 || data.secondOperand == 0 {
-                printer.printErrorMessage("divideZero")
-                return
-            }
+        if data.operatorString == "/" && (data.firstOperand == 0 || data.secondOperand == 0) {
+            printer.printErrorMessage("divideZero")
+            return
+            
         }
         
         //연산 결과 result에 입력 / 입력받은 연산이 없다면 반환되는 nil을 통해 에러 메세지 출력과 함께 종료
