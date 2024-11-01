@@ -91,6 +91,20 @@ private class Div: AbstractOperatorProtocol {
     }
 }
 
+private class Remain: AbstractOperatorProtocol {
+    public func operate(_ firstOperand: Int?, _ secondOperand: Int?) -> Int? {
+        if let first = firstOperand, let second = secondOperand {
+            return first % second
+        } else {
+            return nil
+        }
+    }
+    
+    public required init(){
+        
+    }
+}
+
 //팩토리 패턴 구현 >> 외부에서 switch 쓰는 대신 유지 보수를 용이하려고 함.
 public class OperatorFactory {
     //static을 붙여서 객체를 생성하지 않고도 접근가능한 메서드를 만듬
@@ -104,6 +118,8 @@ public class OperatorFactory {
             return Mul()
         case "/":
             return Div()
+        case "%":
+            return Remain()
         default:
             return nil
         }

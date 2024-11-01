@@ -33,13 +33,15 @@ public class Receiver: ReceiverProtocol {
         "mul":"*",
         "*":"*",
         "div":"/",
-        "/":"/"
+        "/":"/",
+        "remain":"%",
+        "%":"%"
     ]
     
     public func receiveOperand() -> Int? {
         //let input = readLine()을 실행했다고 가정
 //        let input: String? = "hello"
-        let input: String? = "0"
+        let input: String? = "34"
         if let checkedInput = input {
             if let isIntTypeInput = Int(checkedInput) {
                 return isIntTypeInput
@@ -57,7 +59,7 @@ public class Receiver: ReceiverProtocol {
     
     public func receiveOperator() -> String? {
         //let input = readLine()을 실행했다고 가정
-        let input: String? = "div"
+        let input: String? = "%"
         if let returnSymbol = operatorKeywordDict[input] {
             return returnSymbol
         } else {
