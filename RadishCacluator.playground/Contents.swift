@@ -47,10 +47,11 @@
  2. 계산 알고리즘이 단순하고 정수형으로 주고 받기에 다양한 계산에 한계가 있음. 타입을 변경하고 시작 시 단항 연산, 3항 연산을 받도록 기능을 업그레이드해보고 싶음.
  */
 
+//나머지 연산 추가
+
 let radishCalculator = Calculator()
 
 radishCalculator.calculate()
-
 
 
 
