@@ -71,3 +71,5 @@ radishCalculator.calculate()
 //radishCalculator.calculate(selectedOperator: OperatorFactory.createOperator("add"))
 //
 //radishCalculator.printResult()
+
+print("\(5/3)")
